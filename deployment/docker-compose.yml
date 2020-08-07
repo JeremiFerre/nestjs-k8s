@@ -10,6 +10,21 @@ services:
       MYSQL_USER: root
       MYSQL_ROOT_PASSWORD: root
       MYSQL_DATABASE: sample
+  
+  backend:
+    build:
+      context: ..
+      dockerfile: Dockerfile
+    networks:
+      - my_net
+    ports:
+      - 8080:3000
+    environment:
+      DB_HOST: database
+      DB_PORT: 3306
+      DB_USERNAME: root
+      DB_PASSWORD: root
+      DB_DATABASE: sample
 
 networks:
   my_net:
